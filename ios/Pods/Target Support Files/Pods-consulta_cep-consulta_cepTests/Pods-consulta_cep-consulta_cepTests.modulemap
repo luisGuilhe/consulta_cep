@@ -1,0 +1,6 @@
+module Pods_consulta_cep_consulta_cepTests {
+  umbrella header "Pods-consulta_cep-consulta_cepTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
