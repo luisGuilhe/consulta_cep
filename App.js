@@ -1,58 +1,21 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const UselessTextInput = () => {
-  
-  const [number, onChangeNumber] = React.useState(null);
+import BUSCA from './src/index';
+import ENDERECO from './src/endereco';
 
-  function consultaEndereco () {
-    console.log("number -> " + number)
-  }  
-  
+const Stack = createNativeStackNavigator();
 
+function App() {
   return (
-    <SafeAreaView style={styles.conteiner}>
-      <TextInput style={styles.textInput}
-        placeholder='Password'
-        placeholderTextColor = "#808080"
-        autoCorrect={false}
-        onChangeText={value => onChangeNumber(value)}
-      />
-
-      <Button
-        onPress={consultaEndereco}
-        title="Buscar Endereco"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="busca">
+        <Stack.Screen name="busca" component={BUSCA} options={{ headerShown:false }} />
+        <Stack.Screen name="endereco" component={ENDERECO} options={{ headerShown:false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  conteiner:{
-    flex:1,
-    alignItems:"center",
-    justifyContent:"center",
-    backgroundColor:"gray"
-  },
-  textInput:{
-    color:'#000',
-    width:'40%',
-    marginBottom:10,
-    borderRadius:7,
-    padding:10,
-    borderColor: "#000000",
-    borderBottomWidth: 1
-  },
-  input: {
-    height: 40,
-    margin: 20,
-    borderWidth: 1,
-    borderRadius:25,
-    borderColor: "#000000",
-    borderBottomWidth: 1
-  },
-});
-
-export default UselessTextInput;
+export default App;
